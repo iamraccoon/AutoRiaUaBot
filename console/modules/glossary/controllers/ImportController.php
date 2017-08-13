@@ -1,10 +1,12 @@
 <?php
-namespace storage\controllers;
+namespace glossary\controllers;
+
+use Yii;
 
 /**
  * Class ImportController
  *
- * @package storage\controllers
+ * @package glossary\controllers
  */
 class ImportController extends \yii\console\Controller
 {

@@ -1,10 +1,10 @@
 <?php
-namespace storage;
+namespace glossary;
 
 /**
  * Class Module
  *
- * @package storage
+ * @package glossary
  */
 class Module extends \yii\base\Module
 {
