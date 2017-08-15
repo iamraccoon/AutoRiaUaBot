@@ -10,16 +10,8 @@ namespace models\glossary;
  *
  * @property GlossaryState $state
  */
-class GlossaryCity extends \yii\db\ActiveRecord
+class GlossaryCity extends Glossary
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'glossaryCity';
-    }
-
     /**
      * @inheritdoc
      */

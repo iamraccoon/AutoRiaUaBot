@@ -9,38 +9,8 @@ namespace models\glossary;
  *
  * @property GlossaryModel[] $glossaryModels
  */
-class GlossaryBrand extends \yii\db\ActiveRecord
+class GlossaryBrand extends Glossary
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'glossaryBrand';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['name'], 'required'],
-            [['name'], 'string', 'max' => 32],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'name' => 'Name',
-        ];
-    }
-
     /**
      * @return \yii\db\ActiveQuery
      */

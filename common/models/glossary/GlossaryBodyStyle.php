@@ -7,35 +7,7 @@ namespace models\glossary;
  * @property integer $id
  * @property string $name
  */
-class GlossaryBodyStyle extends \yii\db\ActiveRecord
+class GlossaryBodyStyle extends Glossary
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'glossaryBodyStyle';
-    }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['name'], 'required'],
-            [['name'], 'string', 'max' => 32],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'name' => 'Name',
-        ];
-    }
 }

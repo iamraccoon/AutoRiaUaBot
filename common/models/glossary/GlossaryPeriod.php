@@ -8,16 +8,8 @@ namespace models\glossary;
  * @property integer $code
  * @property string $name
  */
-class GlossaryPeriod extends \yii\db\ActiveRecord
+class GlossaryPeriod extends Glossary
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'glossaryPeriod';
-    }
-
     /**
      * @inheritdoc
      */

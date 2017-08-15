@@ -11,16 +11,8 @@ namespace models\glossary;
  *
  * @property GlossaryBrand $brand
  */
-class GlossaryModel extends \yii\db\ActiveRecord
+class GlossaryModel extends Glossary
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'glossaryModel';
-    }
-
     /**
      * @inheritdoc
      */

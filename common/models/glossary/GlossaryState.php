@@ -9,16 +9,8 @@ namespace models\glossary;
  *
  * @property GlossaryCity[] $glossaryCities
  */
-class GlossaryState extends \yii\db\ActiveRecord
+class GlossaryState extends Glossary
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'glossaryState';
-    }
-
     /**
      * @inheritdoc
      */
@@ -27,17 +19,6 @@ class GlossaryState extends \yii\db\ActiveRecord
         return [
             [['name'], 'required'],
             [['name'], 'string', 'max' => 64],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'name' => 'Name',
         ];
     }
 
