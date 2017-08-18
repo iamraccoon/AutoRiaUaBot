@@ -1,7 +1,7 @@
 <?php
 namespace glossary\controllers;
 
-use Yii;
+use glossary\components\Import;
 
 /**
  * Class ImportController
@@ -10,8 +10,15 @@ use Yii;
  */
 class ImportController extends \yii\console\Controller
 {
-    public function actionRun()
+    /**
+     * Execute glossary import
+     */
+    public function actionExecute()
     {
-        // TODO implement
+        try {
+            (new Import())->import();
+        } catch (\Exception $e) {
+            // TODO send email
+        }
     }
 }

@@ -13,7 +13,7 @@ class Module extends \yii\base\Module
      */
     public function init()
     {
-        $this->defaultRoute = 'import/run';
+        $this->defaultRoute = 'import/execute';
 
         parent::init();
     }

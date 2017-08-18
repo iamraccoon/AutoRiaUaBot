@@ -1,6 +1,8 @@
 <?php
 namespace models\glossary;
 
+use yii\helpers\ArrayHelper;
+
 /**
  * This is the model class for table "glossaryModel"
  *
@@ -45,5 +47,40 @@ class GlossaryModel extends Glossary
     public function getBrand()
     {
         return $this->hasOne(GlossaryBrand::className(), ['id' => 'brandId']);
+    }
+
+    /**
+     * Get glossary cities
+     *
+     * @return array
+     */
+    public function getGlossaryData()
+    {
+        $data = static::find()->asArray()->all();
+        $modelsByState = ArrayHelper::index($data, null, 'brandId');
+        foreach ($modelsByState as $modelId => $group) {
+            $modelsByState[$modelId] = ArrayHelper::map($group, 'id', 'name', 'group');
+        }
+
+        return $modelsByState;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function makeBatchInsertData($data, $repository, $dependentId)
+    {
+        $batchInsertData = [];
+        foreach ($data as $groupId => $cur) {
+            if (empty($cur[0]['value'])) {
+                $batchInsertData[] = [$cur['value'], $dependentId, NULL, $cur['name']];
+            } else {
+                foreach ($cur as $model) {
+                    $batchInsertData[] = [$model['value'], $dependentId, $groupId, $model['name']];
+                }
+            }
+        }
+
+        return $batchInsertData;
     }
 }

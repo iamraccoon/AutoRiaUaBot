@@ -1,6 +1,8 @@
 <?php
 namespace models\glossary;
 
+use yii\helpers\ArrayHelper;
+
 /**
  * Class Glossary
  *
@@ -39,5 +41,37 @@ abstract class Glossary extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['name'], 'string', 'max' => 32],
         ];
+    }
+
+    /**
+     * Get glossary data
+     *
+     * @return array
+     */
+    public function getGlossaryData()
+    {
+        $data = static::find()->asArray()->all();
+        return ArrayHelper::map($data, 'id', 'name');
+    }
+
+    /**
+     * Make batch insert data
+     *
+     * @param array $data Data from API
+     * @param array $repository Repository
+     * @param int $dependentId Id of dependent
+     *
+     * @return array
+     */
+    public function makeBatchInsertData($data, $repository, $dependentId)
+    {
+        $batchInsertData = [];
+        foreach ($data as $cur) {
+            if (!isset($repository[$cur['value']])) {
+                $batchInsertData[] = [$cur['value'], $cur['name']];
+            }
+        }
+
+        return $batchInsertData;
     }
 }
