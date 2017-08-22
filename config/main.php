@@ -5,6 +5,8 @@ Yii::setAlias('httpclient', dirname(__DIR__) . '/common/components/httpclient');
 Yii::setAlias('app/migrations', dirname(__DIR__) . '/console/migrations');
 Yii::setAlias('models/glossary', dirname(__DIR__) . '/common/models/glossary');
 
+$keys = require(__DIR__ . '/keys.php');
+
 $config = [
     'id' => 'app',
     'basePath' => dirname(__DIR__),
@@ -25,7 +27,7 @@ $config = [
         'autoRia' => [
             'class' => httpclient\AutoRia::className(),
             'baseUrl' => 'https://developers.ria.com/auto',
-            'apiKey' => 'dBkMcJoWz5OD1k6CH1AERgUMFNQwXlNNZfiteIwg'
+            'apiKey' => YII_ENV_DEV ? $keys['dev']['riaApiKey'] : $keys['prod']['riaApiKey']
         ],
         'db' => require(__DIR__ . '/db.php'),
     ],

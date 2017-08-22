@@ -1,3 +1,5 @@
 /vendor
 /runtime
 /bot/runtime
+
+/config/keys.php
