@@ -11,11 +11,6 @@ use httpclient\AutoRia;
 trait RequestsTrait
 {
     /**
-     * @var int Category of car
-     */
-    private $carCategory = 1;
-
-    /**
      * Map of requests
      *
      * @return array
@@ -30,12 +25,12 @@ trait RequestsTrait
             ],
             'glossaryColor' => 'colors',
             'glossaryFuel' => 'type',
-            'glossaryBodyStyle' => 'categories/' . $this->carCategory . '/bodystyles',
-            'glossaryBrand' => 'categories/' . $this->carCategory . '/marks',
-            'glossaryOption' => 'categories/' . $this->carCategory . '/options',
-            'glossaryTransmission' => 'categories/' . $this->carCategory . '/gearboxes',
+            'glossaryBodyStyle' => 'categories/' . AutoRia::CAR_CATEGORY_ID . '/bodystyles',
+            'glossaryBrand' => 'categories/' . AutoRia::CAR_CATEGORY_ID . '/marks',
+            'glossaryOption' => 'categories/' . AutoRia::CAR_CATEGORY_ID . '/options',
+            'glossaryTransmission' => 'categories/' . AutoRia::CAR_CATEGORY_ID . '/gearboxes',
             'glossaryModel' => [
-                'url' => 'categories/' . $this->carCategory . '/marks/:ID/models/_group',
+                'url' => 'categories/' . AutoRia::CAR_CATEGORY_ID . '/marks/:ID/models/_group',
                 'dependency' => 'glossaryBrand'
             ]
         ];

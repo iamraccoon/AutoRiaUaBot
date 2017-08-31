@@ -1,9 +1,6 @@
 <?php
-Yii::setAlias('bot', dirname(__DIR__) . '/bot');
-Yii::setAlias('glossary', dirname(__DIR__) . '/console/modules/glossary');
-Yii::setAlias('httpclient', dirname(__DIR__) . '/common/components/httpclient');
-Yii::setAlias('app/migrations', dirname(__DIR__) . '/console/migrations');
-Yii::setAlias('models/glossary', dirname(__DIR__) . '/common/models/glossary');
+
+require(__DIR__ . '/alias.php');
 
 $keys = require(__DIR__ . '/keys.php');
 
@@ -14,7 +11,12 @@ $config = [
     'controllerNamespace' => 'bot\controllers',
     'components' => [
         'cache' => [
-            'class' => 'yii\caching\DummyCache',
+            'class' => \yii\redis\Cache::className()
+        ],
+        'redis' => [
+            'class' => \yii\redis\Connection::className(),
+            'hostname' => '127.0.0.1',
+            'database' => 1,
         ],
         'log' => [
             'targets' => [
@@ -34,6 +36,9 @@ $config = [
     'modules' => [
         'glossary' => [
             'class' => glossary\Module::className(),
+        ],
+        'search' => [
+            'class' => search\Module::className(),
         ],
     ],
 ];
