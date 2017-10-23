@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  php:
+    image: php:7-fpm
+    working_dir: "/home"
+      volumes:
+        - ".:/home"
+    depends_on:
+      - mysql
+  mysql:
+      image: mysql:5.5
+      environment:
+        MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+        MYSQL_DATABASE:      ${MYSQL_DATABASE}
+        MYSQL_USER:          ${MYSQL_USER}
+        MYSQL_PASSWORD:      ${MYSQL_PASSWORD}
